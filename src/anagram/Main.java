@@ -16,54 +16,60 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length > 0) {
-            reverseEachWordOfString(args[0]);
+            printRevertedString(args[0]);
         } else {
             System.out.println("No argument! USAGE: java Anagram \"Some line\"");
         }
     }
 
-    public static void reverseEachWordOfString(String input) {
-        String[] words = input.split(" ");
-        List<String> wordsList = Arrays.asList(words);
-        StringBuilder newLineBuffer = new StringBuilder("");
-        String reverseString = parseEachWordsOnCharsAndPuttReverseIntoArray(wordsList, newLineBuffer);
-        System.out.println(input);
-        System.out.println(reverseString);
+    public static void printRevertedString(String input) {
+        System.out.println(createAnagramedString(getListFromWordArray(input)));
     }
 
-    private static String parseEachWordsOnCharsAndPuttReverseIntoArray(List<String> words, StringBuilder reverseString) {
+    private static List<String> getListFromWordArray(String input) {
+        List<String> wordsList = Arrays.asList(input.split(" "));
+        return wordsList;
+    }
+
+    public static String createAnagramedString(List<String> words) {
+        StringBuilder newLineBuffer = new StringBuilder();
         for (int i = 0; i < words.size(); i++) {
             String word = words.get(i);
-            char[] arrayForNewReverseWord = parseWordOnChars(word);
-            reverseEachWord(word, arrayForNewReverseWord);
-            reverseString.append(String.valueOf(arrayForNewReverseWord)).append(" ");
+            reverseEachWord(word);
+            newLineBuffer.append(reverseEachWord(word)).append(" ");
         }
-        return reverseString.toString();
+        return newLineBuffer.toString();
     }
 
-    private static void reverseEachWord(String word, char[] arrayForNewReverseWord) {
+    private static String reverseEachWord(String word) {
+        int charIndex = 0;
+        char[] arrayForNewReverseWord = parseWordOnChars(word);
         for (int j = 0; j < word.length(); j++) {
-            if (Character.isLetter(word.charAt(j))) {
+            charIndex = word.charAt(j);
+            if (Character.isLetter(charIndex)) {
                 for (int k = arrayForNewReverseWord.length - 1; k >= 0; k--) {
                     if (arrayForNewReverseWord[k] == '\u0000') {
-                        arrayForNewReverseWord[k] = word.charAt(j);
+                        arrayForNewReverseWord[k] = (char) charIndex;
                         break;
                     }
                 }
             }
         }
+        return Arrays.toString(arrayForNewReverseWord);
     }
 
     private static char[] parseWordOnChars(String word) {
-        char[] arrayForNewReverseWord = new char[word.length()];
+        int charIndex = 0;
+        char[] parsedOnCharsWord = new char[word.length()];
         for (int j = 0; j < word.length(); j++) {
-            if (Character.isLetter(word.charAt(j))) {
-                arrayForNewReverseWord[j] = '\u0000';
+            charIndex = word.charAt(j);
+            if (Character.isLetter(charIndex)) {
+                parsedOnCharsWord[j] = '\u0000';
             } else {
-                arrayForNewReverseWord[j] = word.charAt(j);
+                parsedOnCharsWord[j] = (char) charIndex;
             }
         }
-        return arrayForNewReverseWord;
+        return parsedOnCharsWord;
     }
 
 }
