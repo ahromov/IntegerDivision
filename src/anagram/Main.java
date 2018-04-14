@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class Main {
 
+    private static final char EMPTY_SYMBOL = '\u0000';
+
     public static void main(String[] args) {
         if (args.length > 0) {
             printRevertedString(args[0]);
@@ -43,12 +45,12 @@ public class Main {
 
     private static String reverseEachWord(String word) {
         int charIndex = 0;
-        char[] arrayForNewReverseWord = parseWordOnChars(word);
+        char[] arrayForNewReverseWord = putNonLetterAndEmptySymbols(word);
         for (int j = 0; j < word.length(); j++) {
             charIndex = word.charAt(j);
             if (Character.isLetter(charIndex)) {
                 for (int k = arrayForNewReverseWord.length - 1; k >= 0; k--) {
-                    if (arrayForNewReverseWord[k] == '\u0000') {
+                    if (isEmptySymbol(arrayForNewReverseWord[k])) {
                         arrayForNewReverseWord[k] = (char) charIndex;
                         break;
                     }
@@ -58,13 +60,17 @@ public class Main {
         return Arrays.toString(arrayForNewReverseWord);
     }
 
-    private static char[] parseWordOnChars(String word) {
+    private static boolean isEmptySymbol(char symbol) {
+        return symbol == EMPTY_SYMBOL;
+    }
+
+    private static char[] putNonLetterAndEmptySymbols(String word) {
         int charIndex = 0;
         char[] parsedOnCharsWord = new char[word.length()];
         for (int j = 0; j < word.length(); j++) {
             charIndex = word.charAt(j);
             if (Character.isLetter(charIndex)) {
-                parsedOnCharsWord[j] = '\u0000';
+                parsedOnCharsWord[j] = EMPTY_SYMBOL;
             } else {
                 parsedOnCharsWord[j] = (char) charIndex;
             }
