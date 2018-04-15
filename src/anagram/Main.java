@@ -42,12 +42,8 @@ public class Main {
     }
 
     private static String reverseWord(String word) {
-        int symbol = 0;
         char[] arrayForNewReverseWord = putNonLetters(word);
-        for (int j = 0; j < word.length(); j++) {
-            symbol = word.charAt(j);
-            putReversedLetters(symbol, arrayForNewReverseWord);
-        }
+        arrayForNewReverseWord = putReversedLetters(arrayForNewReverseWord, word);
         return Arrays.toString(arrayForNewReverseWord);
     }
 
@@ -65,15 +61,20 @@ public class Main {
         return charsArray;
     }
 
-    private static void putReversedLetters(int symbol, char[] arrayForNewReverseWord) {
-        if (Character.isLetter(symbol)) {
-            for (int k = arrayForNewReverseWord.length - 1; k >= 0; k--) {
-                if (isEmptySymbol(arrayForNewReverseWord[k])) {
-                    arrayForNewReverseWord[k] = (char) symbol;
-                    break;
+    private static char[] putReversedLetters(char[] charsArray, String word) {
+        int symbol = 0;
+        for (int j = 0; j < word.length(); j++) {
+            symbol = word.charAt(j);
+            if (Character.isLetter(symbol)) {
+                for (int k = charsArray.length - 1; k >= 0; k--) {
+                    if (isEmptySymbol(charsArray[k])) {
+                        charsArray[k] = (char) symbol;
+                        break;
+                    }
                 }
             }
         }
+        return charsArray;
     }
 
     private static boolean isEmptySymbol(char symbol) {
