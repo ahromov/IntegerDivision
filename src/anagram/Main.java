@@ -30,7 +30,7 @@ public class Main {
     }
 
     public static String createAnagramedString(String words) {
-        List<String> wordsList = convertToWordsList(words);
+        List<String> wordsList = parseToList(words);
         StringBuilder anagramedStringBuilder = new StringBuilder();
         for (int i = 0; i < wordsList.size(); i++) {
             anagramedStringBuilder.append(reverseWord(wordsList.get(i))).append(" ");
@@ -38,7 +38,7 @@ public class Main {
         return anagramedStringBuilder.toString();
     }
 
-    private static List<String> convertToWordsList(String input) {
+    private static List<String> parseToList(String input) {
         return Arrays.asList(input.split(" "));
     }
 
