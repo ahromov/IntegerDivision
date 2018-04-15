@@ -28,17 +28,17 @@ public class Main {
         System.out.println(createAnagramedString(input));
     }
 
-    private static List<String> getWordsList(String input) {
-        return Arrays.asList(input.split(" "));
-    }
-
     public static String createAnagramedString(String words) {
-        List<String> wordsList = getWordsList(words);
+        List<String> wordsList = createWordsList(words);
         StringBuilder anagramedStringBuilder = new StringBuilder();
         for (int i = 0; i < wordsList.size(); i++) {
             anagramedStringBuilder.append(reverseWord(wordsList.get(i))).append(" ");
         }
         return anagramedStringBuilder.toString();
+    }
+
+    private static List<String> createWordsList(String input) {
+        return Arrays.asList(input.split(" "));
     }
 
     private static String reverseWord(String word) {
@@ -49,6 +49,20 @@ public class Main {
             putReversedLetters(symbol, arrayForNewReverseWord);
         }
         return Arrays.toString(arrayForNewReverseWord);
+    }
+
+    private static char[] putNonLetters(String word) {
+        int symbol;
+        char[] charsArray = new char[word.length()];
+        for (int j = 0; j < word.length(); j++) {
+            symbol = word.charAt(j);
+            if (Character.isLetter(symbol)) {
+                charsArray[j] = EMPTY_SYMBOL;
+            } else {
+                charsArray[j] = (char) symbol;
+            }
+        }
+        return charsArray;
     }
 
     private static void putReversedLetters(int symbol, char[] arrayForNewReverseWord) {
@@ -64,20 +78,6 @@ public class Main {
 
     private static boolean isEmptySymbol(char symbol) {
         return symbol == EMPTY_SYMBOL;
-    }
-
-    private static char[] putNonLetters(String word) {
-        int symbol;
-        char[] charsArray = new char[word.length()];
-        for (int j = 0; j < word.length(); j++) {
-            symbol = word.charAt(j);
-            if (Character.isLetter(symbol)) {
-                charsArray[j] = EMPTY_SYMBOL;
-            } else {
-                charsArray[j] = (char) symbol;
-            }
-        }
-        return charsArray;
     }
 
 }
