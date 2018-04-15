@@ -25,57 +25,59 @@ public class Main {
     }
 
     public static void printRevertedString(String input) {
-        System.out.println(createAnagramedString(getListFromWordArray(input)));
+        System.out.println(createAnagramedString(input));
     }
 
-    private static List<String> getListFromWordArray(String input) {
-        List<String> wordsList = Arrays.asList(input.split(" "));
-        return wordsList;
+    private static List<String> getWordsList(String input) {
+        return Arrays.asList(input.split(" "));
     }
 
-    public static String createAnagramedString(List<String> words) {
-        StringBuilder newLineBuffer = new StringBuilder();
-        for (int i = 0; i < words.size(); i++) {
-            String word = words.get(i);
-            reverseEachWord(word);
-            newLineBuffer.append(reverseEachWord(word)).append(" ");
+    public static String createAnagramedString(String words) {
+        List<String> wordsList = getWordsList(words);
+        StringBuilder anagramedStringBuilder = new StringBuilder();
+        for (int i = 0; i < wordsList.size(); i++) {
+            anagramedStringBuilder.append(reverseWord(wordsList.get(i))).append(" ");
         }
-        return newLineBuffer.toString();
+        return anagramedStringBuilder.toString();
     }
 
-    private static String reverseEachWord(String word) {
-        int charIndex = 0;
-        char[] arrayForNewReverseWord = putNonLetterAndEmptySymbols(word);
+    private static String reverseWord(String word) {
+        int symbol = 0;
+        char[] arrayForNewReverseWord = putNonLetters(word);
         for (int j = 0; j < word.length(); j++) {
-            charIndex = word.charAt(j);
-            if (Character.isLetter(charIndex)) {
-                for (int k = arrayForNewReverseWord.length - 1; k >= 0; k--) {
-                    if (isEmptySymbol(arrayForNewReverseWord[k])) {
-                        arrayForNewReverseWord[k] = (char) charIndex;
-                        break;
-                    }
+            symbol = word.charAt(j);
+            putReversedLetters(symbol, arrayForNewReverseWord);
+        }
+        return Arrays.toString(arrayForNewReverseWord);
+    }
+
+    private static void putReversedLetters(int symbol, char[] arrayForNewReverseWord) {
+        if (Character.isLetter(symbol)) {
+            for (int k = arrayForNewReverseWord.length - 1; k >= 0; k--) {
+                if (isEmptySymbol(arrayForNewReverseWord[k])) {
+                    arrayForNewReverseWord[k] = (char) symbol;
+                    break;
                 }
             }
         }
-        return Arrays.toString(arrayForNewReverseWord);
     }
 
     private static boolean isEmptySymbol(char symbol) {
         return symbol == EMPTY_SYMBOL;
     }
 
-    private static char[] putNonLetterAndEmptySymbols(String word) {
-        int charIndex = 0;
-        char[] parsedOnCharsWord = new char[word.length()];
+    private static char[] putNonLetters(String word) {
+        int symbol;
+        char[] charsArray = new char[word.length()];
         for (int j = 0; j < word.length(); j++) {
-            charIndex = word.charAt(j);
-            if (Character.isLetter(charIndex)) {
-                parsedOnCharsWord[j] = EMPTY_SYMBOL;
+            symbol = word.charAt(j);
+            if (Character.isLetter(symbol)) {
+                charsArray[j] = EMPTY_SYMBOL;
             } else {
-                parsedOnCharsWord[j] = (char) charIndex;
+                charsArray[j] = (char) symbol;
             }
         }
-        return parsedOnCharsWord;
+        return charsArray;
     }
 
 }
