@@ -60,7 +60,7 @@ public class Main {
     }
 
     private static String putReverseLetters(char[] chars, String word) {
-        char[] charsCopy = Arrays.copyOf(chars, word.length());
+        char[] charsCopy = Arrays.copyOf(chars, chars.length);
         for (int j = 0; j < word.length(); j++) {
             int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
