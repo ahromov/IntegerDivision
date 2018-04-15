@@ -15,7 +15,6 @@ import java.util.List;
 public class Main {
 
     private static final char EMPTY_SYMBOL = '\u0000';
-    private static int symbol;
 
     public static void main(String[] args) {
         if (args.length > 0) {
@@ -26,54 +25,54 @@ public class Main {
     }
 
     public static void printRevertedString(String input) {
-        System.out.println(createAnagramedString(input));
+        System.out.println(createAnagramedWords(input));
     }
 
-    public static String createAnagramedString(String words) {
-        List<String> wordsList = parseToList(words);
-        StringBuilder anagramedStringBuilder = new StringBuilder();
-        for (int i = 0; i < wordsList.size(); i++) {
-            anagramedStringBuilder.append(reverseWord(wordsList.get(i))).append(" ");
-        }
-        return anagramedStringBuilder.toString();
+    public static String createAnagramedWords(String words) {
+        List<String> wordsList = splitWords(words);
+        StringBuilder anagramedWords = new StringBuilder();
+        wordsList.forEach((word) -> {
+            anagramedWords.append(reverseWord(word)).append(" ");
+        });
+        return anagramedWords.toString();
     }
 
-    private static List<String> parseToList(String input) {
+    private static List<String> splitWords(String input) {
         return Arrays.asList(input.split(" "));
     }
 
     private static String reverseWord(String word) {
-        char[] reversedChars = new char[word.length()];
-        reversedChars = putNonLetters(reversedChars, word);
-        reversedChars = putReverseLetters(reversedChars, word);
-        return Arrays.toString(reversedChars);
+        char[] reversedChars = getNonLetters(word);
+        return putReverseLetters(reversedChars, word);
     }
 
-    private static char[] putNonLetters(char[] chars, String word) {
+    private static char[] getNonLetters(String word) {
+        char[] reversedChars = new char[word.length()];
         for (int j = 0; j < word.length(); j++) {
-            symbol = word.charAt(j);
+            int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
-                chars[j] = EMPTY_SYMBOL;
+                reversedChars[j] = EMPTY_SYMBOL;
             } else {
-                chars[j] = (char) symbol;
+                reversedChars[j] = (char) symbol;
             }
         }
-        return chars;
+        return reversedChars;
     }
 
-    private static char[] putReverseLetters(char[] chars, String word) {
+    private static String putReverseLetters(char[] chars, String word) {
+        char[] charsCopy = Arrays.copyOf(chars, word.length());
         for (int j = 0; j < word.length(); j++) {
-            symbol = word.charAt(j);
+            int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
-                for (int k = chars.length - 1; k >= 0; k--) {
-                    if (isEmptySymbol(chars[k])) {
-                        chars[k] = (char) symbol;
+                for (int k = charsCopy.length - 1; k >= 0; k--) {
+                    if (isEmptySymbol(charsCopy[k])) {
+                        charsCopy[k] = (char) symbol;
                         break;
                     }
                 }
             }
         }
-        return chars;
+        return Arrays.toString(charsCopy);
     }
 
     private static boolean isEmptySymbol(char symbol) {
