@@ -20,7 +20,7 @@ public class Main {
         if (args.length > 0) {
             printRevertedString(args[0]);
         } else {
-            System.out.println("No argument! USAGE: java Anagram \"Some line\"");
+            System.out.println("No argument(s)! USAGE: java Anagram \"Some line\"");
         }
     }
 
