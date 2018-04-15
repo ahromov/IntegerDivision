@@ -45,7 +45,7 @@ public class Main {
     private static String reverseWord(String word) {
         char[] reversedChars = new char[word.length()];
         reversedChars = putNonLetters(reversedChars, word);
-        reversedChars = putReversedLetters(reversedChars, word);
+        reversedChars = putReverseLetters(reversedChars, word);
         return Arrays.toString(reversedChars);
     }
 
@@ -61,7 +61,7 @@ public class Main {
         return chars;
     }
 
-    private static char[] putReversedLetters(char[] chars, String word) {
+    private static char[] putReverseLetters(char[] chars, String word) {
         for (int j = 0; j < word.length(); j++) {
             symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
