@@ -12,8 +12,8 @@ package anagram;
 public class Main {
 
     public static void main(String[] args) {
-        Anagram anagram = new Anagram();
         if (args.length > 0) {
+            Anagram anagram = new Anagram();
             anagram.printRevertedString(args[0]);
         } else {
             System.out.println("No argument(s)! USAGE: java Anagram \"Some line\"");
