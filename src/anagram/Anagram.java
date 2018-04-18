@@ -20,13 +20,15 @@ public class Anagram {
         System.out.println(createAnagramedWords(input));
     }
 
-    public String createAnagramedWords(String words) {
-        List<String> wordsList = splitWords(words);
+    public String createAnagramedWords(String input) {
+        List<String> wordsList = splitWords(input);
         StringBuilder anagramedWords = new StringBuilder();
-        wordsList.forEach((word) -> {
+        wordsList.forEach((String word) -> {
             anagramedWords.append(reverseWord(word)).append(" ");
         });
         return anagramedWords.toString();
+
+      
     }
 
     private List<String> splitWords(String input) {
@@ -34,8 +36,7 @@ public class Anagram {
     }
 
     private String reverseWord(String word) {
-        char[] reversedChars = getNonLetters(word);
-        return putReverseLetters(reversedChars, word);
+        return putReverseLetters(getNonLetters(word), word);
     }
 
     private char[] getNonLetters(String word) {
