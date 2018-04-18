@@ -27,7 +27,6 @@ public class Anagram {
             anagramedWords.append(reverseWord(word)).append(" ");
         });
         return anagramedWords.toString();
-
     }
 
     private List<String> splitWords(String input) {
