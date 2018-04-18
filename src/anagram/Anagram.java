@@ -28,7 +28,6 @@ public class Anagram {
         });
         return anagramedWords.toString();
 
-      
     }
 
     private List<String> splitWords(String input) {
