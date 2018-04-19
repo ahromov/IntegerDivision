@@ -32,7 +32,7 @@ public class Anagram {
 
     private List<String> getAnagramedWords(List<String> words) {
         List<String> anagramedWords = new ArrayList<>();
-        words.forEach((String word) -> {
+        words.forEach(word -> {
             anagramedWords.add(reverseWord(word));
         });
         return anagramedWords;
