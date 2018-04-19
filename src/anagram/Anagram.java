@@ -5,6 +5,7 @@
  */
 package anagram;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,15 +23,20 @@ public class Anagram {
 
     public String createAnagramedWords(String input) {
         List<String> wordsList = splitWords(input);
-        StringBuilder anagramedWords = new StringBuilder();
-        wordsList.forEach((String word) -> {
-            anagramedWords.append(reverseWord(word)).append(" ");
-        });
-        return anagramedWords.toString();
+        List<String> anagramedWords = getAnagramedWords(wordsList);
+        return String.join(" ", anagramedWords);
     }
 
     private List<String> splitWords(String input) {
         return Arrays.asList(input.split(" "));
+    }
+
+    private List<String> getAnagramedWords(List<String> words) {
+        List<String> anagramedWords = new ArrayList<>();
+        words.forEach((String word) -> {
+            anagramedWords.add(reverseWord(word));
+        });
+        return anagramedWords;
     }
 
     private String reverseWord(String word) {
