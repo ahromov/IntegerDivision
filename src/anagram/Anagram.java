@@ -16,7 +16,7 @@ import java.util.List;
 public class Anagram {
 
     private static final char EMPTY_SYMBOL = '\u0000';
-    int lastIndex;
+    private int lastIndex;
 
     public void printRevertedString(String input) {
         System.out.println(createAnagramedWords(input));
