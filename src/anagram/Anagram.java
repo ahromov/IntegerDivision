@@ -16,6 +16,7 @@ import java.util.List;
 public class Anagram {
 
     private static final char EMPTY_SYMBOL = '\u0000';
+    int lastIndex;
 
     public void printRevertedString(String input) {
         System.out.println(createAnagramedWords(input));
@@ -32,7 +33,7 @@ public class Anagram {
 
     private List<String> getAnagramedWords(List<String> words) {
         List<String> anagramedWords = new ArrayList<>();
-        words.forEach(word -> { 
+        words.forEach(word -> {
             anagramedWords.add(reverseWord(word));
         });
         return anagramedWords;
@@ -60,15 +61,31 @@ public class Anagram {
         for (int j = 0; j < word.length(); j++) {
             int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
-                for (int k = charsCopy.length - 1; k >= 0; k--) {
-                    if (isEmptySymbol(charsCopy[k])) {
-                        charsCopy[k] = (char) symbol;
-                        break;
-                    }
-                }
+                putWhereEmpty(charsCopy, symbol);
             }
         }
         return Arrays.toString(charsCopy);
+    }
+
+    private void putWhereEmpty(char[] charsCopy, int symbol) {
+        if (lastIndex != 0) {
+            for (int k = lastIndex - 1; k >= 0; k--) {
+                if (putIfEmpty(charsCopy, k, symbol)) break;
+            }
+        } else {
+            for (int k = charsCopy.length - 1; k >= 0; k--) {
+                if (putIfEmpty(charsCopy, k, symbol)) break;
+            }
+        }
+    }
+
+    private boolean putIfEmpty(char[] charsCopy, int k, int symbol) {
+        if (isEmptySymbol(charsCopy[k])) {
+            charsCopy[k] = (char) symbol;
+            lastIndex = k;
+            return true;
+        }
+        return false;
     }
 
     private boolean isEmptySymbol(char symbol) {
