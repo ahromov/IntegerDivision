@@ -61,13 +61,13 @@ public class Anagram {
         for (int j = 0; j < word.length(); j++) {
             int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
-                putWhereEmpty(charsCopy, symbol);
+                whereIsEmpty(charsCopy, symbol);
             }
         }
         return Arrays.toString(charsCopy);
     }
 
-    private void putWhereEmpty(char[] charsCopy, int symbol) {
+    private void whereIsEmpty(char[] charsCopy, int symbol) {
         if (lastIndex != 0) {
             for (int k = lastIndex - 1; k >= 0; k--) {
                 if (putIfEmpty(charsCopy, k, symbol)) break;
