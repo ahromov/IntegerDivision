@@ -68,7 +68,7 @@ public class Anagram {
     }
 
     private void whereIsEmpty(char[] charsCopy, int symbol) {
-        if (lastIndex != 0) {
+        if (lastIndex > 0) {
             for (int k = lastIndex - 1; k >= 0; k--) {
                 if (putIfEmpty(charsCopy, k, symbol)) break;
             }
