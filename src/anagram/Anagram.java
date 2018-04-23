@@ -53,9 +53,9 @@ public class Anagram {
     private String reverseLetters(String word) {
         StringBuilder sb = new StringBuilder();
         for (int j = word.length() - 1; j >= 0; j--) {
-            int symbol = word.charAt(j);
-            if (Character.isLetter(symbol)) {
-                sb.append((char) symbol);
+            int letter = word.charAt(j);
+            if (Character.isLetter(letter)) {
+                sb.append((char) letter);
             }
         }
         return sb.toString();
