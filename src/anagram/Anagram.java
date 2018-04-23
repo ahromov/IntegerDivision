@@ -22,8 +22,7 @@ public class Anagram {
     }
 
     public String createAnagramedWords(String input) {
-        List<String> wordsList = splitWords(input);
-        return String.join(" ", getAnagramedWords(wordsList));
+        return String.join(" ", getAnagramedWords(splitWords(input)));
     }
 
     private List<String> splitWords(String input) {
