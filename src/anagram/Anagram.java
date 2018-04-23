@@ -42,8 +42,9 @@ public class Anagram {
     private Map<Integer, Character> getNonLetters(String word) {
         Map<Integer, Character> nonLetters = new HashMap<>();
         for (int j = 0; j < word.length(); j++) {
-            if (!Character.isLetter(word.charAt(j))) {
-                nonLetters.put(j, word.charAt(j));
+            int symbol = word.charAt(j);
+            if (!Character.isLetter(symbol)) {
+                nonLetters.put(j, (char)symbol);
             }
         }
         return nonLetters;
