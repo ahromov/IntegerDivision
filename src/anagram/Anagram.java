@@ -7,16 +7,15 @@ package anagram;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Andrii
  */
 public class Anagram {
-
-    private static final char EMPTY_SYMBOL = '\u0000';
-    private int lastIndex;
 
     public void printRevertedString(String input) {
         System.out.println(createAnagramedWords(input));
@@ -40,55 +39,38 @@ public class Anagram {
     }
 
     private String reverseWord(String word) {
-        return putReverseLetters(getNonLetters(word), word);
+        return putNonLetters(getNonLetters(word), reverseLetters(word));
     }
 
-    private char[] getNonLetters(String word) {
-        char[] reversedChars = new char[word.length()];
+    private Map<Integer, Character> getNonLetters(String word) {
+        Map<Integer, Character> nonLetters = new HashMap<>();        
         for (int j = 0; j < word.length(); j++) {
+            if (!Character.isLetter(word.charAt(j))) {
+                nonLetters.put(j, (char)word.charAt(j));
+            }
+        }
+        return nonLetters;
+    }
+    
+    private String reverseLetters(String word) {
+        StringBuilder sb = new StringBuilder();
+        for (int j = word.length() - 1; j >= 0; j--) {
             int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
-                reversedChars[j] = EMPTY_SYMBOL;
-            } else {
-                reversedChars[j] = (char) symbol;
+                sb.append((char)symbol);
             }
         }
-        return reversedChars;
+        return sb.toString();
     }
 
-    private String putReverseLetters(char[] chars, String word) {
-        char[] charsCopy = Arrays.copyOf(chars, chars.length);
-        for (int j = 0; j < word.length(); j++) {
-            int symbol = word.charAt(j);
-            if (Character.isLetter(symbol)) {
-                whereIsEmpty(charsCopy, symbol);
-            }
-        }
-        return Arrays.toString(charsCopy);
+    private String putNonLetters(Map<Integer, Character> m, String revertedWord){
+        StringBuilder sb = new StringBuilder(revertedWord);
+        m.entrySet().forEach(entry -> {            
+            int key = entry.getKey();
+            char value = entry.getValue();
+            sb.insert(key, value);
+        });
+        return sb.toString();
     }
-
-    private void whereIsEmpty(char[] charsCopy, int symbol) {
-        if (lastIndex > 0) {
-            for (int k = lastIndex - 1; k >= 0; k--) {
-                if (putIfEmpty(charsCopy, k, symbol)) break;
-            }
-        } else {
-            for (int k = charsCopy.length - 1; k >= 0; k--) {
-                if (putIfEmpty(charsCopy, k, symbol)) break;
-            }
-        }
-    }
-
-    private boolean putIfEmpty(char[] charsCopy, int k, int symbol) {
-        if (isEmptySymbol(charsCopy[k])) {
-            charsCopy[k] = (char) symbol;
-            lastIndex = k;
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isEmptySymbol(char symbol) {
-        return symbol == EMPTY_SYMBOL;
-    }
+    
 }
