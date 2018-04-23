@@ -31,9 +31,7 @@ public class Anagram {
 
     private List<String> getAnagramedWords(List<String> words) {
         List<String> anagramedWords = new ArrayList<>();
-        words.forEach(word -> {
-            anagramedWords.add(reverseWord(word));
-        });
+        words.forEach(word -> anagramedWords.add(reverseWord(word)));
         return anagramedWords;
     }
 
@@ -42,34 +40,30 @@ public class Anagram {
     }
 
     private Map<Integer, Character> getNonLetters(String word) {
-        Map<Integer, Character> nonLetters = new HashMap<>();        
+        Map<Integer, Character> nonLetters = new HashMap<>();
         for (int j = 0; j < word.length(); j++) {
             if (!Character.isLetter(word.charAt(j))) {
-                nonLetters.put(j, (char)word.charAt(j));
+                nonLetters.put(j, word.charAt(j));
             }
         }
         return nonLetters;
     }
-    
+
     private String reverseLetters(String word) {
         StringBuilder sb = new StringBuilder();
         for (int j = word.length() - 1; j >= 0; j--) {
             int symbol = word.charAt(j);
             if (Character.isLetter(symbol)) {
-                sb.append((char)symbol);
+                sb.append((char) symbol);
             }
         }
         return sb.toString();
     }
 
-    private String putNonLetters(Map<Integer, Character> m, String revertedWord){
+    private String putNonLetters(Map<Integer, Character> m, String revertedWord) {
         StringBuilder sb = new StringBuilder(revertedWord);
-        m.entrySet().forEach(entry -> {            
-            int key = entry.getKey();
-            char value = entry.getValue();
-            sb.insert(key, value);
-        });
+        m.entrySet().forEach(entry -> sb.insert(entry.getKey(), entry.getValue()));
         return sb.toString();
     }
-    
+
 }
