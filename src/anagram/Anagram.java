@@ -62,7 +62,7 @@ public class Anagram {
 
     private String putNonLetters(Map<Integer, Character> m, String revertedWord) {
         StringBuilder sb = new StringBuilder(revertedWord);
-        m.entrySet().forEach(entry -> sb.insert(entry.getKey(), entry.getValue()));
+        m.entrySet().forEach(entry -> sb.insert((int)entry.getKey(), entry.getValue()));
         return sb.toString();
     }
 
