@@ -23,9 +23,9 @@ public class AnagramTest {
     @Test
     public void testPrintRevertedString() {
         System.out.println("printRevertedString");
-        String input = "";
+        String input = "1ts te5t meth0d";
         Anagram instance = new Anagram();
-        String expResult = "";
+        String expResult = "1ts te5t meth0d";
         instance.printRevertedString(input);
         assertEquals(expResult, input);
     }
@@ -36,9 +36,9 @@ public class AnagramTest {
     @Test
     public void testCreateAnagramedWords() {
         System.out.println("createAnagramedWords");
-        String input = "Hello1";
+        String input = "1ts te5t meth0d";
         Anagram instance = new Anagram();
-        String expResult = "olleH1";
+        String expResult = "1st te5t dhte0m";
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
