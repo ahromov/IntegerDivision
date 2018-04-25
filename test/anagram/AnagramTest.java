@@ -17,9 +17,6 @@ public class AnagramTest {
     public AnagramTest() {
     }
     
-    /**
-     * Test of printRevertedString method, of class Anagram.
-     */
     @Test
     public void testPrintRevertedString() {
         System.out.println("printRevertedString");
@@ -30,9 +27,6 @@ public class AnagramTest {
         assertEquals(expResult, input);
     }
 
-    /**
-     * Test of createAnagramedWords method, of class Anagram.
-     */
     @Test
     public void testCreateAnagramedWords() {
         System.out.println("createAnagramedWords");
