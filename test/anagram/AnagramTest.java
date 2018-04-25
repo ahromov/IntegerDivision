@@ -25,7 +25,9 @@ public class AnagramTest {
         System.out.println("printRevertedString");
         String input = "";
         Anagram instance = new Anagram();
+        String expResult = "";
         instance.printRevertedString(input);
+        assertEquals(expResult, input);
     }
 
     /**
