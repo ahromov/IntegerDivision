@@ -13,14 +13,14 @@ import org.junit.Test;
  * @author Andrii
  */
 public class AnagramTest {
-    
-    @Test (expected = NullPointerException.class)
+
+    @Test(expected = NullPointerException.class)
     public void whenStringNullThenExceptionThrown() {
         String input = null;
         Anagram instance = new Anagram();
         instance.createAnagramedWords(input);
     }
-    
+
     @Test
     public void whenStringIsEmptyThenBackEmptyString() {
         String input = "";
@@ -29,7 +29,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenWordsConsistsOfLettersOnlyThenCreateAnagramedWords() {
         String input = "its test method";
@@ -38,7 +38,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenStringConsistsOfDigitsOnlyThenDigitsStayOnSamePlaces() {
         String input = "123 45678 90";
@@ -47,7 +47,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenWordsConsistsOfSpecSymbolsOnlyThenSymbolsStayOnSamePlaces() {
         String input = "!@ #$% ^&*()";
@@ -56,7 +56,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenWordsConsistsOfLettersAndDigitsThenReverseLettersNumbersStayOnSamePlaces() {
         String input = "1ts te5t meth0d";
@@ -65,7 +65,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenWordsConsistsOfLettersAndSpecSymbolsThenReverseLettersSymbolsStayOnSamePlaces() {
         String input = "!ts test& meth0d";
@@ -74,7 +74,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenStringConsistsOfDigitsAndSpecSymbolsThenTheyStayOnSamePlaces() {
         String input = "!1@2 #3$4%5 ^6&7";
@@ -83,7 +83,7 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void whenWordsConsistsOfLettersDigitsSpecSymbolsThenReverseLettersSymbolsDigitsStayOnSamePlaces() {
         String input = "!1ts te5t& meth0d&";
@@ -92,5 +92,5 @@ public class AnagramTest {
         String result = instance.createAnagramedWords(input);
         assertEquals(expResult, result);
     }
-    
+
 }
