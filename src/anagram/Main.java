@@ -28,6 +28,4 @@ public class Main {
         System.out.println(anagram.createAnagramedWords(args[0]));
     }
 
-   
-
 }
