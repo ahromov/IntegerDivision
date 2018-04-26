@@ -17,10 +17,6 @@ import java.util.Map;
  */
 public class Anagram {
 
-    public void printRevertedString(String input) {
-        System.out.println(createAnagramedWords(input));
-    }
-
     public String createAnagramedWords(String input) {
         return String.join(" ", getAnagramedWords(splitWords(input)));
     }

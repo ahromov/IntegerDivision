@@ -14,10 +14,20 @@ public class Main {
     public static void main(String[] args) {
         if (args.length != 0) {
             Anagram anagram = new Anagram();
-            anagram.printRevertedString(args[0]);
+            printAnagramedString(anagram, args);
         } else {
-            System.out.println("No argument(s)! USAGE: java Anagram \"Some line\"");
+            printWarningMessage();
         }
     }
+
+    private static void printWarningMessage() {
+        System.out.println("No argument(s)! USAGE: java Anagram \"Some line\"");
+    }
+
+    private static void printAnagramedString(Anagram anagram, String[] args) {
+        System.out.println(anagram.createAnagramedWords(args[0]));
+    }
+
+   
 
 }
