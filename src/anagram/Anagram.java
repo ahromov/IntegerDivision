@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  *
- * @author Andrii
+ * @author Andrii Hromov
  */
 public class Anagram {
 
