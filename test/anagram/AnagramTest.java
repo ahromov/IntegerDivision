@@ -15,14 +15,14 @@ import org.junit.Test;
 public class AnagramTest {
 
     @Test(expected = NullPointerException.class)
-    public void whenStringNullThenExceptionThrown() {
+    public void whenStringIsNullThenExceptionThrown() {
         String input = null;
         Anagram instance = new Anagram();
         instance.createAnagramedWords(input);
     }
 
     @Test
-    public void whenStringIsEmptyThenBackEmptyString() {
+    public void whenStringIsEmptyThenOutputIsEmpty() {
         String input = "";
         Anagram instance = new Anagram();
         String expResult = "";
@@ -58,7 +58,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void whenWordsConsistsOfLettersAndDigitsThenReverseLettersNumbersStayOnSamePlaces() {
+    public void whenWordsConsistsOfLettersAndDigitsThenReverseLettersNumbersStaysOnSamePlaces() {
         String input = "1ts te5t meth0d";
         Anagram instance = new Anagram();
         String expResult = "1st te5t dhte0m";
@@ -67,7 +67,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void whenWordsConsistsOfLettersAndSpecSymbolsThenReverseLettersSymbolsStayOnSamePlaces() {
+    public void whenWordsConsistsOfLettersAndSpecSymbolsThenReverseLettersSymbolsStaysOnSamePlaces() {
         String input = "!ts test& meth0d";
         Anagram instance = new Anagram();
         String expResult = "!st tset& dhte0m";
@@ -76,7 +76,7 @@ public class AnagramTest {
     }
 
     @Test
-    public void whenStringConsistsOfDigitsAndSpecSymbolsThenTheyStayOnSamePlaces() {
+    public void whenStringConsistsOfDigitsAndSpecSymbolsThenTheyStaysOnSamePlaces() {
         String input = "!1@2 #3$4%5 ^6&7";
         Anagram instance = new Anagram();
         String expResult = "!1@2 #3$4%5 ^6&7";
