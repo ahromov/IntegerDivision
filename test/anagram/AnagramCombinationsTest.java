@@ -34,10 +34,10 @@ public class AnagramCombinationsTest{
         });
     }
 
-    private final Anagram anagram;
-    private final String fDescription;
-    private final String fInput;
-    private final String fExpected;
+    private Anagram anagram;
+    private String fDescription;
+    private String fInput;
+    private String fExpected;
 
     public AnagramCombinationsTest(String caseDescription, String input, String expected) {
         this.fDescription = caseDescription;
