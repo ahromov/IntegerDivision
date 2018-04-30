@@ -21,7 +21,7 @@ public class AnagramNullTest {
     }
     
     @Test(expected = NullPointerException.class)
-    public void whenStringIsNullThenExceptionThrown() {
+    public final void whenStringIsNullThenExceptionThrown() {
         assertEquals("Expected NullPointerException wasn't thrown", anagram.createAnagramedWords(null));
     }
     

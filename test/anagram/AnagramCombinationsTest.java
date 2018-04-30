@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
  * @author Andrii Hromov
  */
 @RunWith(value = Parameterized.class)
-public class AnagramCombinationsTest {
+public class AnagramCombinationsTest extends AnagramNullTest{
 
     @Parameters
     public static Collection<String[]> data() {
@@ -34,7 +34,6 @@ public class AnagramCombinationsTest {
         });
     }
 
-    private final Anagram anagram;
     private final String fDescription;
     private final String fInput;
     private final String fExpected;
@@ -43,7 +42,7 @@ public class AnagramCombinationsTest {
         this.fDescription = caseDescription;
         this.fInput = input;
         this.fExpected = expected;
-        this.anagram = new Anagram();
+        super.anagram = new Anagram();
     }
 
     @Test
