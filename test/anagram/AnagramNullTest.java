@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AnagramNullTest {
     
-    Anagram anagram;
+    protected Anagram anagram;
     
     public AnagramNullTest() {
         this.anagram = new Anagram();
