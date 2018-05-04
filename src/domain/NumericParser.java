@@ -19,7 +19,6 @@ import java.util.Map;
 public class NumericParser {
 
     private int numeric;
-
     private List<String> elementsOfNumeric = new LinkedList<>();
     private boolean isSined = false;
     private String sing;
@@ -45,7 +44,7 @@ public class NumericParser {
     public boolean checkIsEmpty() {
         return elementsOfNumeric.isEmpty();
     }
-    
+
     public int getNumeric() {
         return numeric;
     }
@@ -66,10 +65,10 @@ public class NumericParser {
         return Integer.parseInt(elementsOfNumeric.get(position));
     }
 
-    public void removeElement(int i){
+    public void removeElement(int i) {
         elementsOfNumeric.remove(i);
     }
-    
+
     public int getNextElement() {
         ListIterator li = elementsOfNumeric.listIterator();
         if (li.hasNext()) {

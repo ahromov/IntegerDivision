@@ -42,8 +42,8 @@ public class NumericsOperator {
         int firstElement = 0;
         sb.append(odd).append(npDevided.getNextElement());
         if (!npDevided.checkIsEmpty()) {
-                npDevided.removeElement(firstElement);
-            }
+            npDevided.removeElement(firstElement);
+        }
         return Integer.parseInt(sb.toString());
     }
 
