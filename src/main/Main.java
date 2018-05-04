@@ -17,7 +17,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String InputDevidedNumeric = "78945";
+        String InputDevidedNumeric = "-78945";
         String outputDeviderNumeric = "4";
         NumericParser parsedDevided = new NumericParser(InputDevidedNumeric);
         NumericParser parsedDevider = new NumericParser(outputDeviderNumeric);
@@ -41,7 +41,7 @@ public class Main {
             multipleResults.add(multipleResult);
             submisionResult = newDevided - multipleResult;
         }
-        System.out.println(" _" + parsedDevided.getNumeric() + "\t|" + parsedDevider.getNumeric());
+        System.out.println(backspaceCheckerBeforeSined(parsedDevided) + "_" + parsedDevided.getNumeric() + "\t|" + parsedDevider.getNumeric());
         System.out.println("  " + multipleResults.get(0) + "\t|" + printDeshes(devisionResults.length()));
         System.out.println("  " + printDeshes(newDevidedNumerics.get(0).toString().length()) + "\t|" + devisionResults.toString());
         printToColumn(newDevidedNumerics, multipleResults);
@@ -68,6 +68,13 @@ public class Main {
         return sb.toString();
     }
 
+    public static String backspaceCheckerBeforeSined(NumericParser np){
+        if (np.checkIfSined()){
+            return "";
+        }
+        return " ";
+    }
+    
     private static String printDeshes(Integer numLength) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < numLength; i++) {
