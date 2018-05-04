@@ -5,17 +5,11 @@
  */
 package domain;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  *
  * @author Andrew Hromov
  */
 public class NumericsOperator {
-
-    private List<Integer> leftsIndexes = new LinkedList<>();
 
     public int getIncompletePartial(NumericParser devidedNumeric, NumericParser deviderNumeric) {
         StringBuilder sb = new StringBuilder();
