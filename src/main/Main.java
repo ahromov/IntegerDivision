@@ -17,10 +17,10 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        String devidedNumeric = "78945";
-        String deviderNumeric = "4";
-        NumericParser npDevidedNum = new NumericParser(devidedNumeric);
-        NumericParser npDeviderNum = new NumericParser(deviderNumeric);
+        String InputDevidedNumeric = "78945";
+        String outputDeviderNumeric = "4";
+        NumericParser npDevidedNum = new NumericParser(InputDevidedNumeric);
+        NumericParser npDeviderNum = new NumericParser(outputDeviderNumeric);
         NumericsOperator nOper = new NumericsOperator();
         StringBuilder devisionResults = new StringBuilder();
         List<Integer> multiplResults = new LinkedList<>();
