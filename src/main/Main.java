@@ -24,7 +24,7 @@ public class Main {
         NumericParser npDeviderNum = new NumericParser(deviderNumeric);
         NumericsOperator nOper = new NumericsOperator();
 
-        List<Integer> devisionResults = new LinkedList<>();
+        StringBuilder devisionResults = new StringBuilder();
         List<Integer> multiplResults = new LinkedList<>();
         List<Integer> submisioResults = new LinkedList<>();
         List<Integer> newDevidedNumerics = new LinkedList<>();
@@ -34,7 +34,7 @@ public class Main {
         incPart = nOper.getIncompletePartial(npDevidedNum, npDeviderNum);
         newDevidedNumerics.add(incPart);
         devRes = incPart / npDeviderNum.getNumeric();
-        devisionResults.add(devRes);
+        devisionResults.append(devRes);
         multRes = devRes * npDeviderNum.getNumeric();
         multiplResults.add(multRes);
         submRes = incPart - multRes;
@@ -44,7 +44,7 @@ public class Main {
             newDevided = nOper.getNewDevidedNumeric(submRes, npDevidedNum);
             newDevidedNumerics.add(newDevided);
             devRes = newDevided / npDeviderNum.getNumeric();
-            devisionResults.add(devRes);
+            devisionResults.append(devRes);
             multRes = devRes * npDeviderNum.getNumeric();
             multiplResults.add(multRes);
             submRes = newDevided - multRes;
