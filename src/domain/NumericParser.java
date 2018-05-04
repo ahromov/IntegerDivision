@@ -62,11 +62,6 @@ public class NumericParser {
         return numberOfDigits;
     }
 
-    /**
-     *
-     * @param position start from 1 if numeric is sined.
-     * @return digit as integer by index.
-     */
     public int getElement(int position) {
         return Integer.parseInt(elementsOfNumeric.get(position));
     }
@@ -75,13 +70,6 @@ public class NumericParser {
         elementsOfNumeric.remove(i);
     }
     
-    public void removePreviosElement() {
-        ListIterator li = elementsOfNumeric.listIterator();
-        if (li.hasPrevious()) {
-            elementsOfNumeric.remove((String) li.previous());
-        }
-    }
-
     public int getNextElement() {
         ListIterator li = elementsOfNumeric.listIterator();
         if (li.hasNext()) {
