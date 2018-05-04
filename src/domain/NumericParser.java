@@ -50,10 +50,6 @@ public class NumericParser {
         return isSined;
     }
 
-    public String getSing() {
-        return sing;
-    }
-
     public int getDigitsNumber() {
         return numberOfDigits;
     }

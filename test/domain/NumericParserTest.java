@@ -55,17 +55,6 @@ public class NumericParserTest {
     }
 
     /**
-     * Test of getSing method, of class NumericParser.
-     */
-    @Test
-    public void testGetSing() {
-        NumericParser instance = numericParser;
-        String expResult = "-";
-        String result = instance.getSing();
-        assertEquals(expResult, result);
-    }
-
-    /**
      * Test of getDigitsNumber method, of class NumericParser.
      */
     @Test
