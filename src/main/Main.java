@@ -29,19 +29,17 @@ public class Main {
         List<Integer> submisioResults = new LinkedList<>();
         List<Integer> newDevidedNumerics = new LinkedList<>();
 
-        int incPart, devRes, multRes, submRes, newDevided;
-
-        incPart = nOper.getIncompletePartial(npDevidedNum, npDeviderNum);
+        int incPart = nOper.getIncompletePartial(npDevidedNum, npDeviderNum);
         newDevidedNumerics.add(incPart);
-        devRes = incPart / npDeviderNum.getNumeric();
+        int devRes = incPart / npDeviderNum.getNumeric();
         devisionResults.append(devRes);
-        multRes = devRes * npDeviderNum.getNumeric();
+        int multRes = devRes * npDeviderNum.getNumeric();
         multiplResults.add(multRes);
-        submRes = incPart - multRes;
+        int submRes = incPart - multRes;
         submisioResults.add(submRes);
 
         while (!npDevidedNum.checkIsEmpty()) {
-            newDevided = nOper.getNewDevidedNumeric(submRes, npDevidedNum);
+            int newDevided = nOper.getNewDevidedNumeric(submRes, npDevidedNum);
             newDevidedNumerics.add(newDevided);
             devRes = newDevided / npDeviderNum.getNumeric();
             devisionResults.append(devRes);
