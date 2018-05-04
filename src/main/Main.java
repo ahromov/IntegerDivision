@@ -68,19 +68,20 @@ public class Main {
         return sb.toString();
     }
 
-    public static String backspaceCheckerBeforeSined(NumericParser np){
-        if (np.checkIfSined()){
+    public static String backspaceCheckerBeforeSined(NumericParser np) {
+        if (np.checkIfSined()) {
             return "";
         }
         return " ";
     }
-    
-    public static String signChecker(NumericParser devided, NumericParser devider){
-        if (devided.checkIfSined() || devider.checkIfSined())
+
+    public static String signChecker(NumericParser devided, NumericParser devider) {
+        if (devided.checkIfSined() || devider.checkIfSined()) {
             return "-";
+        }
         return "";
     }
-    
+
     private static String printDeshes(Integer numLength) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < numLength; i++) {
