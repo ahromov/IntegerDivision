@@ -19,34 +19,33 @@ public class Main {
     public static void main(String[] args) {
         String InputDevidedNumeric = "78945";
         String outputDeviderNumeric = "4";
-        NumericParser npDevidedNum = new NumericParser(InputDevidedNumeric);
-        NumericParser npDeviderNum = new NumericParser(outputDeviderNumeric);
-        NumericsOperator nOper = new NumericsOperator();
+        NumericParser parsedDevided = new NumericParser(InputDevidedNumeric);
+        NumericParser parsedDevider = new NumericParser(outputDeviderNumeric);
+        NumericsOperator numericsOperator = new NumericsOperator();
         StringBuilder devisionResults = new StringBuilder();
-        List<Integer> multiplResults = new LinkedList<>();
-        List<Integer> submisioResults = new LinkedList<>();
+        List<Integer> multipleResults = new LinkedList<>();
         List<Integer> newDevidedNumerics = new LinkedList<>();
-        int incPart = nOper.getIncompletePartial(npDevidedNum, npDeviderNum);
-        newDevidedNumerics.add(incPart);
-        int devRes = incPart / npDeviderNum.getNumeric();
-        devisionResults.append(devRes);
-        int multRes = devRes * npDeviderNum.getNumeric();
-        multiplResults.add(multRes);
-        int submRes = incPart - multRes;
-        while (!npDevidedNum.checkIsEmpty()) {
-            int newDevided = nOper.getNewDevidedNumeric(submRes, npDevidedNum);
+        int incompletePartial = numericsOperator.getIncompletePartial(parsedDevided, parsedDevider);
+        newDevidedNumerics.add(incompletePartial);
+        int devisionResult = incompletePartial / parsedDevider.getNumeric();
+        devisionResults.append(devisionResult);
+        int multipleResult = devisionResult * parsedDevider.getNumeric();
+        multipleResults.add(multipleResult);
+        int submisionResult = incompletePartial - multipleResult;
+        while (!parsedDevided.checkIsEmpty()) {
+            int newDevided = numericsOperator.getNewDevidedNumeric(submisionResult, parsedDevided);
             newDevidedNumerics.add(newDevided);
-            devRes = newDevided / npDeviderNum.getNumeric();
-            devisionResults.append(devRes);
-            multRes = devRes * npDeviderNum.getNumeric();
-            multiplResults.add(multRes);
-            submRes = newDevided - multRes;
+            devisionResult = newDevided / parsedDevider.getNumeric();
+            devisionResults.append(devisionResult);
+            multipleResult = devisionResult * parsedDevider.getNumeric();
+            multipleResults.add(multipleResult);
+            submisionResult = newDevided - multipleResult;
         }
-        System.out.println(" _" + npDevidedNum.getNumeric() + "\t|" + npDeviderNum.getNumeric());
-        System.out.println("  " + multiplResults.get(0) + "\t|" + printDeshes(devisionResults.length()));
+        System.out.println(" _" + parsedDevided.getNumeric() + "\t|" + parsedDevider.getNumeric());
+        System.out.println("  " + multipleResults.get(0) + "\t|" + printDeshes(devisionResults.length()));
         System.out.println("  " + printDeshes(newDevidedNumerics.get(0).toString().length()) + "\t|" + devisionResults.toString());
-        printToColumn(newDevidedNumerics, multiplResults);
-        System.out.println(addBackspaces(newDevidedNumerics.size() + 1) + submRes);
+        printToColumn(newDevidedNumerics, multipleResults);
+        System.out.println(addBackspaces(newDevidedNumerics.size() + 1) + submisionResult);
     }
 
     private static void printToColumn(List<Integer> newDevidedNumerics, List<Integer> multiplResults) {
