@@ -52,7 +52,7 @@ public class Main {
         }
 
         System.out.println("_" + npDevidedNum.getNumeric() + "\t|" + npDeviderNum.getNumeric());
-        System.out.println(" " + incPart + "\t|---------");
+        System.out.println(" " + incPart + "\t|-----");
         System.out.println(" " + "-" + "\t|" + devisionResults.toString());
         System.out.println("_" + newDevidedNumerics.get(1));
         System.out.println(" " + multiplResults.get(1));
