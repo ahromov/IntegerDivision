@@ -42,7 +42,7 @@ public class Main {
 
         while (!npDevidedNum.checkIsEmpty()) {
             newDevided = nOper.getNewDevidedNumeric(submRes, npDevidedNum);
-            newDevidedNumerics.add(incPart);
+            newDevidedNumerics.add(newDevided);
             devRes = newDevided / npDeviderNum.getNumeric();
             devisionResults.add(devRes);
             multRes = devRes * npDeviderNum.getNumeric();
@@ -50,11 +50,23 @@ public class Main {
             submRes = newDevided - multRes;
             submisioResults.add(submRes);
         }
-
-        System.out.println(devisionResults.toString());
-        System.out.println(multiplResults.toString());
-        System.out.println(submisioResults.toString());
-        System.out.println(newDevidedNumerics.toString());
+        
+        System.out.println("_" + npDevidedNum.getNumeric() + "\t|" + npDeviderNum.getNumeric());
+        System.out.println(" " + incPart + "\t|---------");
+        System.out.println(" " + "-" + "\t|" + devisionResults.toString());
+        System.out.println("_" + newDevidedNumerics.get(1));
+        System.out.println(" " + multiplResults.get(1));
+        System.out.println(" " + "--");
+        System.out.println(" " + "_" + newDevidedNumerics.get(2));
+        System.out.println(" " + " " + multiplResults.get(2));
+        System.out.println(" " + " " + "--");
+        System.out.println(" " + " " + "_" + newDevidedNumerics.get(3));
+        System.out.println(" " + " " + " " + multiplResults.get(3));
+        System.out.println(" " + " " +  " " + "--");
+        System.out.println(" " + " " + " " + "_" + newDevidedNumerics.get(4));
+        System.out.println(" " + " " + " " + " " + multiplResults.get(4));
+        System.out.println(" " + " " +  " " + " " + "--");
+        System.out.println(" " + " " + " " + " " + " " + submisioResults.get(4));
     }
 
 }
