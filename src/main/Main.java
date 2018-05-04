@@ -43,7 +43,7 @@ public class Main {
         }
         System.out.println(backspaceCheckerBeforeSined(parsedDevided) + "_" + parsedDevided.getNumeric() + "\t|" + parsedDevider.getNumeric());
         System.out.println("  " + multipleResults.get(0) + "\t|" + printDeshes(devisionResults.length()));
-        System.out.println("  " + printDeshes(newDevidedNumerics.get(0).toString().length()) + "\t|" + devisionResults.toString());
+        System.out.println("  " + printDeshes(newDevidedNumerics.get(0).toString().length()) + "\t|" + signChecker(parsedDevided, parsedDevider) + devisionResults.toString());
         printToColumn(newDevidedNumerics, multipleResults);
         System.out.println(addBackspaces(newDevidedNumerics.size() + 1) + submisionResult);
     }
@@ -73,6 +73,12 @@ public class Main {
             return "";
         }
         return " ";
+    }
+    
+    public static String signChecker(NumericParser devided, NumericParser devider){
+        if (devided.checkIfSined() || devider.checkIfSined())
+            return "-";
+        return "";
     }
     
     private static String printDeshes(Integer numLength) {
