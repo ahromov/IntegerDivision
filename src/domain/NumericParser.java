@@ -67,6 +67,7 @@ public class NumericParser {
 
     public void removeElement(int i) {
         elementsOfNumeric.remove(i);
+        numberOfDigits = elementsOfNumeric.size();
     }
 
     public int getNextElement() {
