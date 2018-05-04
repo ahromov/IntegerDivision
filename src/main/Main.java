@@ -19,16 +19,13 @@ public class Main {
     public static void main(String[] args) {
         String devidedNumeric = "78945";
         String deviderNumeric = "4";
-
         NumericParser npDevidedNum = new NumericParser(devidedNumeric);
         NumericParser npDeviderNum = new NumericParser(deviderNumeric);
         NumericsOperator nOper = new NumericsOperator();
-
         StringBuilder devisionResults = new StringBuilder();
         List<Integer> multiplResults = new LinkedList<>();
         List<Integer> submisioResults = new LinkedList<>();
         List<Integer> newDevidedNumerics = new LinkedList<>();
-
         int incPart = nOper.getIncompletePartial(npDevidedNum, npDeviderNum);
         newDevidedNumerics.add(incPart);
         int devRes = incPart / npDeviderNum.getNumeric();
@@ -36,8 +33,6 @@ public class Main {
         int multRes = devRes * npDeviderNum.getNumeric();
         multiplResults.add(multRes);
         int submRes = incPart - multRes;
-        submisioResults.add(submRes);
-
         while (!npDevidedNum.checkIsEmpty()) {
             int newDevided = nOper.getNewDevidedNumeric(submRes, npDevidedNum);
             newDevidedNumerics.add(newDevided);
@@ -46,25 +41,40 @@ public class Main {
             multRes = devRes * npDeviderNum.getNumeric();
             multiplResults.add(multRes);
             submRes = newDevided - multRes;
-            submisioResults.add(submRes);
         }
+        System.out.println(" _" + npDevidedNum.getNumeric() + "\t|" + npDeviderNum.getNumeric());
+        System.out.println("  " + multiplResults.get(0) + "\t|" + printDeshes(devisionResults.length()));
+        System.out.println("  " + printDeshes(newDevidedNumerics.get(0).toString().length()) + "\t|" + devisionResults.toString());
+        printToColumn(newDevidedNumerics, multiplResults);
+        System.out.println(addBackspaces(newDevidedNumerics.size() + 1) + submRes);
+    }
 
-        System.out.println("_" + npDevidedNum.getNumeric() + "\t|" + npDeviderNum.getNumeric());
-        System.out.println(" " + incPart + "\t|-----");
-        System.out.println(" " + "-" + "\t|" + devisionResults.toString());
-        System.out.println("_" + newDevidedNumerics.get(1));
-        System.out.println(" " + multiplResults.get(1));
-        System.out.println(" " + "--");
-        System.out.println(" " + "_" + newDevidedNumerics.get(2));
-        System.out.println(" " + " " + multiplResults.get(2));
-        System.out.println(" " + " " + "--");
-        System.out.println(" " + " " + "_" + newDevidedNumerics.get(3));
-        System.out.println(" " + " " + " " + multiplResults.get(3));
-        System.out.println(" " + " " + " " + "--");
-        System.out.println(" " + " " + " " + "_" + newDevidedNumerics.get(4));
-        System.out.println(" " + " " + " " + " " + multiplResults.get(4));
-        System.out.println(" " + " " + " " + " " + "--");
-        System.out.println(" " + " " + " " + " " + " " + submisioResults.get(4));
+    private static void printToColumn(List<Integer> newDevidedNumerics, List<Integer> multiplResults) {
+        for (int i = 1; i < newDevidedNumerics.size(); i++) {
+            System.out.println(addBackspaces(i) + "_" + newDevidedNumerics.get(i));
+            System.out.println(addBackspaces(i) + " " + multiplResults.get(i));
+            System.out.println(addBackspaces(i) + " " + printDeshes(newDevidedNumerics.get(i).toString().length()));
+        }
+    }
+
+    private static String addBackspaces(int count) {
+        StringBuilder sb = new StringBuilder();
+        if (count < 1) {
+            return sb.toString();
+        } else {
+            for (int i = 0; i < count; i++) {
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
+    }
+
+    private static String printDeshes(Integer numLength) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numLength; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
     }
 
 }
