@@ -40,10 +40,11 @@ public class NumericsOperatorTest {
      */
     @Test
     public void testGetNewDevidedNumeric() {
+        numericsOperator.getIncompletePartial(devidedNumeric, deviderNumeric);
         int odd = 5;
         NumericParser npDevided = devidedNumeric;
         NumericsOperator instance = numericsOperator;
-        int expResult = 51;
+        int expResult = 50;
         int result = instance.getNewDevidedNumeric(odd, npDevided);
         assertEquals(expResult, result);
     }
