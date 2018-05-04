@@ -5,10 +5,6 @@
  */
 package domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,27 +13,11 @@ import static org.junit.Assert.*;
  * @author Andrew
  */
 public class NumericParserTest {
-    
+
     NumericParser numericParser;
-    
+
     public NumericParserTest() {
         numericParser = new NumericParser("-12345");
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
@@ -130,5 +110,5 @@ public class NumericParserTest {
         int result = instance.getNextElement();
         assertEquals(expResult, result);
     }
-    
+
 }
