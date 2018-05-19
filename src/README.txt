@@ -2,10 +2,21 @@ Write an application that divides numbers and prints result into console. + JUni
 
 Example of result:
 
-_150    |2
- 14     |---       
- --     |75   
- _10
-  10
+
+
+_78945	|4
+ 7	|-----
+ -	|19736
+_38
+ 36
+ --
+ _29
+  28
   --
-   0
+  _14
+   12
+   --
+   _25
+    24
+    --
+     1

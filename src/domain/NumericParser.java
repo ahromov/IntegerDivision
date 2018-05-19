@@ -5,12 +5,9 @@
  */
 package domain;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.Map;
 
 /**
  *
@@ -19,7 +16,6 @@ import java.util.Map;
 public class NumericParser {
 
     private int numeric;
-
     private List<String> elementsOfNumeric = new LinkedList<>();
     private boolean isSined = false;
     private String sing;
@@ -45,7 +41,7 @@ public class NumericParser {
     public boolean checkIsEmpty() {
         return elementsOfNumeric.isEmpty();
     }
-    
+
     public int getNumeric() {
         return numeric;
     }
@@ -54,32 +50,17 @@ public class NumericParser {
         return isSined;
     }
 
-    public String getSing() {
-        return sing;
-    }
-
     public int getDigitsNumber() {
         return numberOfDigits;
     }
 
-    /**
-     *
-     * @param position start from 1 if numeric is sined.
-     * @return digit as integer by index.
-     */
     public int getElement(int position) {
         return Integer.parseInt(elementsOfNumeric.get(position));
     }
 
-    public void removeElement(int i){
+    public void removeElement(int i) {
         elementsOfNumeric.remove(i);
-    }
-    
-    public void removePreviosElement() {
-        ListIterator li = elementsOfNumeric.listIterator();
-        if (li.hasPrevious()) {
-            elementsOfNumeric.remove((String) li.previous());
-        }
+        numberOfDigits = elementsOfNumeric.size();
     }
 
     public int getNextElement() {
