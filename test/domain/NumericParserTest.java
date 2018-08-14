@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Andrew
+ * @author Andrii Hromov
  */
 public class NumericParserTest {
 

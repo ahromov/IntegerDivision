@@ -12,10 +12,9 @@ import java.util.List;
 
 /**
  *
- * @author Andrew Hromov
+ * @author Andrii Hromov
  */
 public class Main {
-
     public static void main(String[] args) {
         String InputDevidedNumeric = "-78945";
         String outputDeviderNumeric = "4";
@@ -89,5 +88,4 @@ public class Main {
         }
         return sb.toString();
     }
-
 }

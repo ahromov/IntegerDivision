@@ -18,14 +18,13 @@ public class NumericParser {
     private int numeric;
     private List<String> elementsOfNumeric = new LinkedList<>();
     private boolean isSined = false;
-    private String sing;
     private int numberOfDigits;
 
     public NumericParser(String numeric) {
         this.numeric = Integer.parseInt(numeric);
         if (numeric.charAt(0) == '-') {
             isSined = true;
-            sing = Character.toString(numeric.charAt(0));
+            Character.toString(numeric.charAt(0));
             for (int i = 1; i < numeric.length(); i++) {
                 elementsOfNumeric.add(Character.toString(numeric.charAt(i)));
             }
@@ -64,7 +63,7 @@ public class NumericParser {
     }
 
     public int getNextElement() {
-        ListIterator li = elementsOfNumeric.listIterator();
+        ListIterator<String> li = elementsOfNumeric.listIterator();
         if (li.hasNext()) {
             return Integer.parseInt((String) li.next());
         }
